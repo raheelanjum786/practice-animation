@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #1c2a44;
+        }
+
+        div {
+            position: absolute;
+            width: 0;
+            height: 100%;
+            background-color: #344056;
+            z-index: 1;
+            box-shadow: 0px 0px 15px #02e4e7;
+        }
+
+        .animated {
+            animation: animate 4s ease-in-out;
+        }
+        button{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 0;
+            background-color: #344056;
+            box-shadow: 0px 0px 15px #02e4e7;
+            padding: 2% 5%;
+            color: white;
+            font-size: 1.5vw;
+            cursor: pointer;
+        }
+        button:hover{
+            opacity: 0.8;
+            transition: all 0.4s;
+        }
+        .left{
+            top: 0;
+            left: 0;
+        }
+        .right{
+            top: 0;
+            right: 0;
+        }
+        @keyframes animate{
+            0%{
+                width: 0%;
+            }
+            50%{
+                width: 50%;
+            }
+            100%{
+                width: 0%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="animated"> -->
+        <div class="left"></div>
+        <button onclick="animation()">Transition</button>
+        <div class="right"></div>
+    <!-- </div> -->
+
+    <script>
+        const div = document.getElementsByTagName('div')
+
+        var elements = Array.prototype.slice.call(div)
+
+        const animation = () => {
+           elements.forEach((element) => {
+            element.classList.add('animated')
+            setTimeout(() => {
+                element.classList.remove('animated')
+            }, 4000)
+            })
+        }
+    </script>
+</body>
+
+</html>
